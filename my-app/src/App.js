@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [userInput, setUserInput] = useState('');
   const [generatedSQL, setGeneratedSQL] = useState('');
+  const [SQLresult, setSQLresult] = useState('');
 
   const handleInputChange = async (event) => {
     const input = event.target.value;
@@ -23,7 +24,9 @@ function App() {
       }
   
       const data = await response.json();
+      console.log(data.result);
       setGeneratedSQL(data.generated_sql);
+      setSQLresult(data.result);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -41,6 +44,12 @@ function App() {
         <label>
           生成的 SQL 语句:
           <textarea value={generatedSQL} readOnly />
+        </label>
+      </div>
+      <div>
+        <label>
+          SQL 执行结果:
+          <textarea value={SQLresult} readOnly />
         </label>
       </div>
     </div>
