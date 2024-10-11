@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pymysql
+import os   
 
 app = Flask(__name__)
 CORS(app)  # 允许所有来源的请求
@@ -14,12 +15,21 @@ CORS(app)  # 允许所有来源的请求
 #     'database': 'pkudtw-dev-countapp-EfmasN'
 # }
 
+# db_config = {
+#     'host': 'localhost',
+#     'port': 3306,
+#     'user': 'root',
+#     'password': '123456789',
+#     'database': 'mydatabase'
+# }
+
+# 从环境变量获取 MySQL 连接配置
 db_config = {
-    'host': 'localhost',
-    'port': 3306,
-    'user': 'root',
-    'password': '123456789',
-    'database': 'mydatabase'
+    'host': os.getenv('MYSQL_HOST', 'localhost'),
+    'port': int(os.getenv('MYSQL_PORT', 3306)),
+    'user': os.getenv('MYSQL_USER', 'root'),
+    'password': os.getenv('MYSQL_PASSWORD', '6643789'),
+    'database': os.getenv('MYSQL_DB', 'mydatabase')
 }
 
 def execute_sql(sql):
