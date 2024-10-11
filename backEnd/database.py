@@ -1,12 +1,21 @@
 import pymysql
 
 
-db = pymysql.connect(host='localhost', user='root', password='6643789', db='mydatabase', port=3306)
+db = pymysql.connect(host='localhost', user='root', password='123456789', db='mydatabase', port=3306)
+
+# db = pymysql.connect(
+#     host='59.111.148.84',
+#     port=3306,
+#     user='pkudt_bF963_user',
+#     password='jo5UkUP1gg',
+#     db='pkudtw-dev-countapp-EfmasN'
+# )
+
 # 创建游标对象
 cursor = db.cursor()
 
 # 创建一个名为"customers"的数据表
-cursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
+# cursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
 
 # 插入记录
 sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
