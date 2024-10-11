@@ -9,7 +9,7 @@ node.js=v20.18.0
 
 ## run  
 * 启动后端：  
-python main.py1  
+python main.py  
 
 * 启动前端  
 cd my-app  
